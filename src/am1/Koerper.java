@@ -1,7 +1,6 @@
 package am1;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -33,10 +32,8 @@ public class Koerper {
 			k.reset();
 	}
 
-	public void zeichneKoerper(Graphics bild, int breite, int hoehe) {
-		bild.setColor(Color.blue);
-		bild.fillRect(0, 0, breite, hoehe);
+	public void zeichneKoerper(Graphics2D leinwand, int breite, int hoehe) {
 		for (Kante k : kanten)
-			k.zeichneKante(bild, breite, hoehe);
+			k.zeichneKante(leinwand, breite, hoehe);
 	}
 }

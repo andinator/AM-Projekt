@@ -6,16 +6,6 @@ public class Punkt3D {
 	double xOrig, yOrig, zOrig;
 	double x, y, z;
 
-	static final double theta = Math.PI * Visualizer.seite / 180.0;
-	static final double phi = Math.PI * Visualizer.hoch / 180.0;
-	static final float cosT = (float)Math.cos( theta ), sinT = (float)Math.sin( theta );
-	static final float cosP = (float)Math.cos( phi ), sinP = (float)Math.sin( phi );
-	static final float cosTcosP = cosT*cosP, cosTsinP = cosT*sinP, sinTcosP = sinT*cosP, sinTsinP = sinT*sinP;
-	
-    static final float naehe = 3;  // Distanz von Sicht zur Seite des Objekts
-    static final float naeheZuObj = 1.5f;  // Distanz von der Seite des Objekts zur Mitte
-
-
 	public Punkt3D(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
@@ -44,6 +34,15 @@ public class Punkt3D {
 	public Point project (int breite, int hoehe) {
 	    int scaleFactor = breite/4;
 		
+	    double theta = Math.PI * Visualizer.seite / 180.0;
+		double phi = Math.PI * Visualizer.hoch / 180.0;
+		float cosT = (float)Math.cos( theta ), sinT = (float)Math.sin( theta );
+		float cosP = (float)Math.cos( phi ), sinP = (float)Math.sin( phi );
+		float cosTcosP = cosT*cosP, cosTsinP = cosT*sinP, sinTcosP = sinT*cosP, sinTsinP = sinT*sinP;
+		
+	    float naehe = 3;  // Distanz von Sicht zur Seite des Objekts
+	    float naeheZuObj = 1.5f;  // Distanz von der Seite des Objekts zur Mitte
+	    
 		double x2d = cosT*x + sinT*z;
         double y2d = -sinTsinP*x + cosP*y + cosTsinP*z;
 
@@ -51,6 +50,7 @@ public class Punkt3D {
         double zTmp = cosTcosP*z - sinTcosP*x - sinP*y;
         x2d = x2d*naehe/(zTmp+naehe+naeheZuObj);
         y2d = y2d*naehe/(zTmp+naehe+naeheZuObj);
+        
         // the 0.5 is to round off when converting to int
         return new Point(
            (int)(breite/2 + scaleFactor*x2d + 0.5),
