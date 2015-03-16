@@ -161,18 +161,3 @@ public class Main2 extends Applet implements MouseListener, MouseMotionListener 
       update(g);
    }
 }
-class Punkt3D {
-       public int x, y, z;
-       public Punkt3D( double e, double Y, double d ) {
-          x = (int) e;
-          y = (int) Y;
-          z = (int) d;
-       }
-    }
-    class Kante {
-       public int a, b;
-       public Kante( int A, int B ) {
-          a = A;
-          b = B;
-       }
-    }
