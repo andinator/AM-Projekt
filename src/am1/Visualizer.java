@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,15 +13,18 @@ import java.util.Collection;
 public class Visualizer extends Applet implements MouseListener,
 		MouseMotionListener {
 
-	Dimension groesse;
-	
-	public void init () {
-		groesse = getSize();
-		
-		Punkt3D_G[] eckpunkt;
-				
+		public void init () {				
 		Koerper wuerfel = new Wuerfel();
 		Koerper tetraeder = new Tetraeder();
+
+		Image zwischenBild = createImage( getSize().width, getSize().height );
+		
+		Image bild =  zwischenBild.getGraphics();
+
+		wuerfel.zeichneKoerper(bild, getSize().width, getSize().height);
+	      addMouseListener(this);
+	      addMouseMotionListener(this);
+	
 	}
 	
 	
