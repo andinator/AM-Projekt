@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.lang.Math;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Visualizer extends Applet implements MouseListener,
 
 		Image zwischenBild = createImage( getSize().width, getSize().height );
 		
-		Image bild =  zwischenBild.getGraphics();
+		Graphics bild =  zwischenBild.getGraphics();
 
 		wuerfel.zeichneKoerper(bild, getSize().width, getSize().height);
 	      addMouseListener(this);
