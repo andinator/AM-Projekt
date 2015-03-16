@@ -1,5 +1,6 @@
 package am1;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Koerper {
@@ -14,6 +15,8 @@ public class Koerper {
 	}
 	
 	public Koerper addOrigin(double x, double y, double z) {
-		foreach
+		Collection<Kante_G> kantenNeu = new ArrayList<Kante_G>();
+		for (Kante_G k : kanten) kantenNeu.add(k.addOrigin(x, y, z));
+		return new Koerper(kantenNeu);
 	}
 }

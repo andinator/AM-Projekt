@@ -18,34 +18,9 @@ public class Visualizer extends Applet implements MouseListener,
 		groesse = getSize();
 		
 		Punkt3D_G[] eckpunkt;
-		
-		// Würfel
-		eckpunkt = new Punkt3D_G[8];
-		eckpunkt[0] = new Punkt3D_G(-1, -1, -1);
-		eckpunkt[1] = new Punkt3D_G(-1, -1, 1);
-		eckpunkt[2] = new Punkt3D_G(-1, 1, -1);
-		eckpunkt[3] = new Punkt3D_G(-1, 1, 1);
-		eckpunkt[4] = new Punkt3D_G(1, -1, -1);
-		eckpunkt[5] = new Punkt3D_G(1, -1, 1);
-		eckpunkt[6] = new Punkt3D_G(1, 1, -1);
-		eckpunkt[7] = new Punkt3D_G(1, 1, 1);
-		
-		Collection<Kante_G> kanten = new ArrayList<Kante_G>();
-		
-		kanten.add(new Kante_G(eckpunkt[0], eckpunkt[1]));
-		kante[1] = new Kante(0, 2);
-		kante[2] = new Kante(0, 4);
-		kante[3] = new Kante(1, 3);
-		kante[4] = new Kante(1, 5);
-		kante[5] = new Kante(2, 3);
-		kante[6] = new Kante(2, 6);
-		kante[7] = new Kante(3, 7);
-		kante[8] = new Kante(4, 5);
-		kante[9] = new Kante(4, 6);
-		kante[10] = new Kante(5, 7);
-		kante[11] = new Kante(6, 7);
-		
-		Koerper Würfel = new Koerper(kanten);
+				
+		Koerper wuerfel = new Wuerfel();
+		Koerper tetraeder = new Tetraeder();
 	}
 	
 	
