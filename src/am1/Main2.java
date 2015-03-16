@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.lang.Math;
 public class Main2 extends Applet implements MouseListener, MouseMotionListener {
-   int breite, höhe;
+   int breite, hoehe;
    int mx, my;  // Mauskoordinaten
    Image zwischenBild;
    Graphics bild;
@@ -15,7 +15,7 @@ public class Main2 extends Applet implements MouseListener, MouseMotionListener 
    Kante[] kante2;
    public void init() {
       breite = getSize().width;
-      höhe = getSize().height;
+      hoehe = getSize().height;
       
       //Bereechnungen Tetraeder
       eckpunkt2 = new Punkt3D[ 8 ];
@@ -42,7 +42,7 @@ public class Main2 extends Applet implements MouseListener, MouseMotionListener 
       kante2[11] = new Kante(6, 7);
       
       
-      //Würfel
+      //WÃ¼rfel
       eckpunkt = new Punkt3D[ 8 ];
       eckpunkt[0] = new Punkt3D(-1, -1, -1);
       eckpunkt[1] = new Punkt3D(-1, -1,  1);
@@ -68,13 +68,13 @@ public class Main2 extends Applet implements MouseListener, MouseMotionListener 
       
       
       
-      zwischenBild = createImage( breite, höhe );
+      zwischenBild = createImage( breite, hoehe );
       bild = zwischenBild.getGraphics();
-      zeichneKörper(bild);
+      zeichneKoerper(bild);
       addMouseListener(this);
       addMouseMotionListener(this);
    }
-   void zeichneKörper(Graphics g) {
+   void zeichneKoerper(Graphics g) {
        
        Graphics2D g2 = (Graphics2D) g;
        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -90,8 +90,8 @@ public class Main2 extends Applet implements MouseListener, MouseMotionListener 
       punkte = new Point[eckpunkt.length];
       int j;
       int scaleFactor = breite/4;
-      float nähe = 3;  // Distanz von Sicht zur Seite des Objekts
-      float näheZuObj = 1.5f;  // Distanz von der Seite des Objekts zur Mitte
+      float naehe = 3;  // Distanz von Sicht zur Seite des Objekts
+      float naeheZuObj = 1.5f;  // Distanz von der Seite des Objekts zur Mitte
       for ( j = 0; j < eckpunkt.length; ++j ) {
          int x0 = eckpunkt[j].x;
          int y0 = eckpunkt[j].y;
@@ -102,18 +102,18 @@ public class Main2 extends Applet implements MouseListener, MouseMotionListener 
          float y1 = -sinTsinP*x0 + cosP*y0 + cosTsinP*z0;
          // now adjust things to get a perspective projection
          float z1 = cosTcosP*z0 - sinTcosP*x0 - sinP*y0;
-         x1 = x1*nähe/(z1+nähe+näheZuObj);
-         y1 = y1*nähe/(z1+nähe+näheZuObj);
+         x1 = x1*naehe/(z1+naehe+naeheZuObj);
+         y1 = y1*naehe/(z1+naehe+naeheZuObj);
          // the 0.5 is to round off when converting to int
          punkte[j] = new Point(
             (int)(breite/2 + scaleFactor*x1 + 0.5),
-            (int)(höhe/2 - scaleFactor*y1 + 0.5)
+            (int)(hoehe/2 - scaleFactor*y1 + 0.5)
          );
       }
       // Zeichne
       
       g2.setColor(Color.blue);
-      g2.fillRect(0, 0, breite, höhe);
+      g2.fillRect(0, 0, breite, hoehe);
      
       for (j = 0; j < kante.length; ++j) {
           Color farbe = new Color(255,255,255,255);
@@ -140,13 +140,13 @@ public class Main2 extends Applet implements MouseListener, MouseMotionListener 
       // letzte Mausposition
       int neu_mx = e.getX();
       int neu_my = e.getY();
-      // winkel anpassen zur Veränderung der Mausposition
+      // winkel anpassen zur Verï¿½nderung der Mausposition
       seite -= neu_mx - mx;
       hoch += neu_my - my;
       
       System.out.println(neu_mx+" "+neu_my);
       // update buffer
-      zeichneKörper(bild);
+      zeichneKoerper(bild);
       // update Mausposition
       mx = neu_mx;
       my = neu_my;
@@ -155,7 +155,7 @@ public class Main2 extends Applet implements MouseListener, MouseMotionListener 
    }
    public void update(Graphics g) {
       g.drawImage(zwischenBild, 0, 0, this);
-      showStatus("Höhe: "+hoch+" Grad, Seite: "+seite+" Grad");
+      showStatus("hoehe: "+hoch+" Grad, Seite: "+seite+" Grad");
    }
    public void paint(Graphics g) {
       update(g);
