@@ -6,9 +6,8 @@ public class Punkt3D {
 	double xOrig, yOrig, zOrig;
 	double x, y, z;
 
-	static final int seite = 35, hoch = 30;
-	static final double theta = Math.PI * seite / 180.0;
-	static final double phi = Math.PI * hoch / 180.0;
+	static final double theta = Math.PI * Visualizer.seite / 180.0;
+	static final double phi = Math.PI * Visualizer.hoch / 180.0;
 	static final float cosT = (float)Math.cos( theta ), sinT = (float)Math.sin( theta );
 	static final float cosP = (float)Math.cos( phi ), sinP = (float)Math.sin( phi );
 	static final float cosTcosP = cosT*cosP, cosTsinP = cosT*sinP, sinTcosP = sinT*cosP, sinTsinP = sinT*sinP;
