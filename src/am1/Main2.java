@@ -17,55 +17,6 @@ public class Main2 extends Applet implements MouseListener, MouseMotionListener 
       breite = getSize().width;
       hoehe = getSize().height;
       
-      //Bereechnungen Tetraeder
-      eckpunkt2 = new Punkt3D[ 8 ];
-      eckpunkt2[0] = new Punkt3D(0, 0, Math.sqrt((2/3))-(1/(2*(Math.sqrt(6)))));
-      eckpunkt2[1] = new Punkt3D((-1/(2*(Math.sqrt(3)))), -0.5, (-1/(2*(Math.sqrt(6)))));
-      eckpunkt2[2] = new Punkt3D((-1/(2*(Math.sqrt(3)))),  0.5, (-1/(2*(Math.sqrt(6)))));
-      eckpunkt2[3] = new Punkt3D((1/(Math.sqrt(3))),  0,  (-1/(2*(Math.sqrt(6)))));
-      eckpunkt2[4] = new Punkt3D( 1, -1, -1);
-      eckpunkt2[5] = new Punkt3D( 1, -1,  1);
-      eckpunkt2[6] = new Punkt3D( 1,  1, -1);
-      eckpunkt2[7] = new Punkt3D( 1,  1,  1);
-      kante2 = new Kante[12];
-      kante2[0] = new Kante(0, 1);
-      kante2[1] = new Kante(0, 2);
-      kante2[2] = new Kante(0, 4);
-      kante2[3] = new Kante(1, 3);
-      kante2[4] = new Kante(1, 5);
-      kante2[5] = new Kante(2, 3);
-      kante2[6] = new Kante(2, 6);
-      kante2[7] = new Kante(3, 7);
-      kante2[8] = new Kante(4, 5);
-      kante2[9] = new Kante(4, 6);
-      kante2[10] = new Kante(5, 7);
-      kante2[11] = new Kante(6, 7);
-      
-      
-      //Würfel
-      eckpunkt = new Punkt3D[ 8 ];
-      eckpunkt[0] = new Punkt3D(-1, -1, -1);
-      eckpunkt[1] = new Punkt3D(-1, -1,  1);
-      eckpunkt[2] = new Punkt3D(-1,  1, -1);
-      eckpunkt[3] = new Punkt3D(-1,  1,  1);
-      eckpunkt[4] = new Punkt3D( 1, -1, -1);
-      eckpunkt[5] = new Punkt3D( 1, -1,  1);
-      eckpunkt[6] = new Punkt3D( 1,  1, -1);
-      eckpunkt[7] = new Punkt3D( 1,  1,  1);
-      kante = new Kante[12];
-      kante[0] = new Kante(0, 1);
-      kante[1] = new Kante(0, 2);
-      kante[2] = new Kante(0, 4);
-      kante[3] = new Kante(1, 3);
-      kante[4] = new Kante(1, 5);
-      kante[5] = new Kante(2, 3);
-      kante[6] = new Kante(2, 6);
-      kante[7] = new Kante(3, 7);
-      kante[8] = new Kante(4, 5);
-      kante[9] = new Kante(4, 6);
-      kante[10] = new Kante(5, 7);
-      kante[11] = new Kante(6, 7);
-      
       
       
       zwischenBild = createImage( breite, hoehe );

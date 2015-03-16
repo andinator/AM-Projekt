@@ -1,9 +1,14 @@
 package am1;
 
-class Kante {
-   public int a, b;
-   public Kante( int A, int B ) {
-      a = A;
-      b = B;
-   }
+public class Kante {
+	Punkt3D_G s, e;
+
+	public Kante(Punkt3D_G s, Punkt3D_G e) {
+		this.s = s;
+		this.e = e;
+	}
+	
+	public Kante addOrigin(double x, double y, double z) {
+		return new Kante (this.s.addOrigin(x, y, z), this.e.addOrigin(x, y, z));
+	}
 }

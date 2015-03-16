@@ -6,7 +6,7 @@ public class Wuerfel extends Koerper {
 	Punkt3D_G[] eckpunkt;
 
 	public Wuerfel () {
-		super(new ArrayList<Kante_G>());
+		super(new ArrayList<Kante>());
 
 		eckpunkt = new Punkt3D_G[8];
 
@@ -19,17 +19,17 @@ public class Wuerfel extends Koerper {
 		eckpunkt[6] = new Punkt3D_G(1, 1, -1);
 		eckpunkt[7] = new Punkt3D_G(1, 1, 1);
 				
-		kanten.add(new Kante_G(eckpunkt[0], eckpunkt[1]));
-		kanten.add(new Kante_G(eckpunkt[0], eckpunkt[2]));
-		kanten.add(new Kante_G(eckpunkt[0], eckpunkt[4]));
-		kanten.add(new Kante_G(eckpunkt[1], eckpunkt[3]));
-		kanten.add(new Kante_G(eckpunkt[1], eckpunkt[5]));
-		kanten.add(new Kante_G(eckpunkt[2], eckpunkt[3]));
-		kanten.add(new Kante_G(eckpunkt[2], eckpunkt[6]));
-		kanten.add(new Kante_G(eckpunkt[3], eckpunkt[7]));
-		kanten.add(new Kante_G(eckpunkt[4], eckpunkt[5]));
-		kanten.add(new Kante_G(eckpunkt[4], eckpunkt[6]));
-		kanten.add(new Kante_G(eckpunkt[5], eckpunkt[7]));
-		kanten.add(new Kante_G(eckpunkt[6], eckpunkt[7]));
+		kanten.add(new Kante(eckpunkt[0], eckpunkt[1]));
+		kanten.add(new Kante(eckpunkt[0], eckpunkt[2]));
+		kanten.add(new Kante(eckpunkt[0], eckpunkt[4]));
+		kanten.add(new Kante(eckpunkt[1], eckpunkt[3]));
+		kanten.add(new Kante(eckpunkt[1], eckpunkt[5]));
+		kanten.add(new Kante(eckpunkt[2], eckpunkt[3]));
+		kanten.add(new Kante(eckpunkt[2], eckpunkt[6]));
+		kanten.add(new Kante(eckpunkt[3], eckpunkt[7]));
+		kanten.add(new Kante(eckpunkt[4], eckpunkt[5]));
+		kanten.add(new Kante(eckpunkt[4], eckpunkt[6]));
+		kanten.add(new Kante(eckpunkt[5], eckpunkt[7]));
+		kanten.add(new Kante(eckpunkt[6], eckpunkt[7]));
 	}
 }
