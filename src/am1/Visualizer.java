@@ -85,5 +85,14 @@ public class Visualizer extends Applet implements MouseListener,
 
 	public void mouseExited(MouseEvent e) {
 	}
+	
+	public void update(Graphics g) {
+		g.drawImage(zwischenBild, 0, 0, this);
+		showStatus("hoehe: " + hoch + " Grad, Seite: " + seite + " Grad");
+	}
+
+	public void paint(Graphics g) {
+		update(g);
+	}
 
 }
