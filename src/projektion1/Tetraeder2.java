@@ -18,9 +18,6 @@ public class Tetraeder2 extends Koerper {
 		for (Punkt p : eckpunkt)
 			punkte.add(p);
 
-		for (Punkt p : eckpunkt)
-			System.out.println(p.x + " \t " + p.y + " \t " + p.z);
-
 		kanten.add(new Kante(eckpunkt[0], eckpunkt[1]));
 		kanten.add(new Kante(eckpunkt[0], eckpunkt[2]));
 		kanten.add(new Kante(eckpunkt[0], eckpunkt[3]));
