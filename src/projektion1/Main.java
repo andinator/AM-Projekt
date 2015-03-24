@@ -50,7 +50,7 @@ public class Main extends Applet implements MouseListener, MouseMotionListener {
 		projektion.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
-		koerper = new Octaeder();
+		koerper = new Icosaeder();
 
 		zeichne(projektion);
 
