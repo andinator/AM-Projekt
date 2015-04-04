@@ -1,5 +1,8 @@
 package projektion1;
 
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+
 /**
  * 
  * @author georgjung
@@ -13,7 +16,7 @@ package projektion1;
  *         werden nur bei Änderung des Blickwinkels neu berechnet und für alle
  *         Punkte statisch abgelegt.
  */
-public class Punkt {
+public class Punkt{
 	// Koeffizienten zur perspektivischen Projektion
 	private static double theta = Math.PI * Main.rotation / 180.0;
 	private static double phi = Math.PI * Main.erhebung / 180.0;
@@ -28,6 +31,9 @@ public class Punkt {
 	// Projektion in 2D
 	int px, py;
 
+	
+	
+	
 	/**
 	 * 
 	 * @param x
@@ -37,7 +43,7 @@ public class Punkt {
 	 * @param z
 	 *            z-Koordinate des Punktes
 	 * 
-	 * @param     x-, y- und z-Koordinate des Punktes. Die Projektion wird
+	 * @param    x-, y- und z-Koordinate des Punktes. Die Projektion wird
 	 *            automatisch berechnet und bis zur Änderung des Blickwinkels
 	 *            abgelegt
 	 */
@@ -65,6 +71,7 @@ public class Punkt {
 		cosTsinP = cosT * sinP;
 		sinTcosP = sinT * cosP;
 		sinTsinP = sinT * sinP;
+		
 	}
 
 	public void projektion() {
@@ -81,5 +88,5 @@ public class Punkt {
 		px = (int) (Main.breite / 2 + Main.skalierung * x1 + 0.5);
 		py = (int) (Main.hoehe / 2 - Main.skalierung * y1 + 0.5);
 	}
-
+	
 }

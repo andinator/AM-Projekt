@@ -9,8 +9,14 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
-public class Main extends Applet implements MouseListener, MouseMotionListener {
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
+public class Main extends Applet implements MouseListener,MouseWheelListener, MouseMotionListener {
 
 	private static final long serialVersionUID = 1L;
 
@@ -28,6 +34,8 @@ public class Main extends Applet implements MouseListener, MouseMotionListener {
 	// Koerper
 	Koerper koerper;
 	Koerper[] xyz = {new X(),new Y(),new Z()};
+	
+	
 
 	// Beobachterposition (Ausgangsposition, verändert sich mit MouseDragged
 	// event)
@@ -36,12 +44,14 @@ public class Main extends Applet implements MouseListener, MouseMotionListener {
 	protected static int skalierung;
 	protected final static double naehe = 3; // Distanz von Sicht zur Seite des
 											 // Objekts
-	protected final static double naeheZuObj = 1.5; // Distanz von der Seite des
+	protected static double naeheZuObj = 0.2; // Distanz von der Seite des
 													// Objekts zur Mitte
 
 	public void init() {
 		breite = getSize().width;
 		hoehe = getSize().height;
+		breite = 500;
+		hoehe = 500;
 		skalierung = (int) breite / 4;
 
 		bild = createImage(breite, hoehe);
@@ -51,17 +61,17 @@ public class Main extends Applet implements MouseListener, MouseMotionListener {
 		projektion.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
-		koerper = new Icosaeder();
+		koerper = new Octaeder();
 		
 
 		zeichne(projektion);
-
+		
+		addMouseWheelListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
 	}
 
 	public void zeichne(Graphics2D g) {
-		
 		
 		
 		g.setColor(Color.gray);
@@ -127,5 +137,26 @@ public class Main extends Applet implements MouseListener, MouseMotionListener {
 
 	public void paint(Graphics g) {
 		update(g);
+	}
+
+	@Override
+	public void mouseWheelMoved(MouseWheelEvent e) {
+		double notches = e.getWheelRotation();
+		
+		if(notches < 0){
+			naeheZuObj=naeheZuObj-0.1;
+			
+			//System.out.println("UP: "+naeheZuObj);
+			zeichne(projektion);
+			repaint();
+		}
+		if(notches > 0){
+			naeheZuObj=naeheZuObj+0.1;
+			
+			//System.out.println("DOWN: "+naeheZuObj);
+			zeichne(projektion);
+			repaint();
+		}
+		
 	}
 }
