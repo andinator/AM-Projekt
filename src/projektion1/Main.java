@@ -27,6 +27,7 @@ public class Main extends Applet implements MouseListener, MouseMotionListener {
 
 	// Koerper
 	Koerper koerper;
+	Koerper[] xyz = {new X(),new Y(),new Z()};
 
 	// Beobachterposition (Ausgangsposition, verÃ¤ndert sich mit MouseDragged
 	// event)
@@ -51,6 +52,7 @@ public class Main extends Applet implements MouseListener, MouseMotionListener {
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
 		koerper = new Icosaeder();
+		
 
 		zeichne(projektion);
 
@@ -59,11 +61,20 @@ public class Main extends Applet implements MouseListener, MouseMotionListener {
 	}
 
 	public void zeichne(Graphics2D g) {
-		g.setColor(Color.blue);
+		
+		
+		
+		g.setColor(Color.gray);
 		g.fillRect(0, 0, breite, hoehe);
 		g.setColor(Color.white);
-
 		koerper.zeichne(g);
+		
+		g.setColor(Color.red);
+		xyz[0].zeichne(g);
+		g.setColor(Color.green);
+		xyz[1].zeichne(g);
+		g.setColor(Color.blue);
+		xyz[2].zeichne(g);
 	}
 
 	@Override
@@ -111,8 +122,7 @@ public class Main extends Applet implements MouseListener, MouseMotionListener {
 
 	public void update(Graphics g) {
 		g.drawImage(bild, 0, 0, this);
-		showStatus("Rotation: " + rotation + "Â°, \t Erhebung: " + erhebung
-				+ "Â°");
+		showStatus("Rotation: " + rotation + "°, \t Erhebung: " + erhebung + "°");
 	}
 
 	public void paint(Graphics g) {

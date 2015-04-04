@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Icosaeder extends Koerper {
 	Punkt[] eckpunkt;
-
+	
 	public Icosaeder() {
 		super(new ArrayList<Punkt>(), new ArrayList<Kante>());
 
@@ -23,8 +23,6 @@ public class Icosaeder extends Koerper {
 		eckpunkt[10] = new Punkt((-1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), -1/2*Math.sqrt((5+Math.sqrt(5))/(5-Math.sqrt(5))), 1/Math.sqrt(10-2*Math.sqrt(5)));
 		eckpunkt[11] = new Punkt((-1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), 1/2*Math.sqrt((5+Math.sqrt(5))/(5-Math.sqrt(5))), 1/Math.sqrt(10-2*Math.sqrt(5)));
 		
-		
-
 		
 		for (Punkt p : eckpunkt) punkte.add(p);
 

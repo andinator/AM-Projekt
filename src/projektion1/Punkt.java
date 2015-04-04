@@ -37,7 +37,7 @@ public class Punkt {
 	 * @param z
 	 *            z-Koordinate des Punktes
 	 * 
-	 *            x-, y- und z-Koordinate des Punktes. Die Projektion wird
+	 * @param     x-, y- und z-Koordinate des Punktes. Die Projektion wird
 	 *            automatisch berechnet und bis zur Änderung des Blickwinkels
 	 *            abgelegt
 	 */
