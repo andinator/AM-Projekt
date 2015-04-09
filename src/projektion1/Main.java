@@ -50,11 +50,11 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		
 		gruppe = new CheckboxGroup();
 		
-		box1 = new Checkbox("Tetraeder",true);
-		box2 = new Checkbox("Hexaeder",false);
-		box3 = new Checkbox("Oktaeder",false);
-		box4 = new Checkbox("Dodekaeder",false);
-		box5 = new Checkbox("Ikosaeder",false);
+		box1 = new Checkbox("Tetraeder",gruppe,true);
+		box2 = new Checkbox("Hexaeder",gruppe,false);
+		box3 = new Checkbox("Oktaeder",gruppe,false);
+		box4 = new Checkbox("Dodekaeder",gruppe,false);
+		box5 = new Checkbox("Ikosaeder",gruppe,false);
 		
 		breite = getSize().width;
 		hoehe = getSize().height;
@@ -69,7 +69,7 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		projektion.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
-		koerper = new Icosaeder();
+		koerper = new Tetraeder();
 		
 		//gruppe.add(box1);
 		
@@ -87,6 +87,9 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 				System.out.println(""+ie.getStateChange());
 				if(ie.getStateChange()==1){
 					System.out.println("Tetraeder");
+					koerper = new Tetraeder();
+					zeichne(projektion);
+					repaint();
 				}
 				
 			}
@@ -100,6 +103,9 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 				System.out.println(""+ie.getStateChange());
 				if(ie.getStateChange()==1){
 					System.out.println("Hexaeder");
+					koerper = new Wuerfel();
+					zeichne(projektion);
+					repaint();
 				}
 				
 			}
@@ -113,6 +119,9 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 				System.out.println(""+ie.getStateChange());
 				if(ie.getStateChange()==1){
 					System.out.println("Oktaeder");
+					koerper = new Octaeder();
+					zeichne(projektion);
+					repaint();
 				}
 				
 			}
@@ -126,6 +135,9 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 				System.out.println(""+ie.getStateChange());
 				if(ie.getStateChange()==1){
 					System.out.println("Dodekaeder");
+					//koerper = new Dodekaeder();
+					zeichne(projektion);
+					repaint();
 				}
 				
 			}
@@ -139,6 +151,9 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 				System.out.println(""+ie.getStateChange());
 				if(ie.getStateChange()==1){
 					System.out.println("Ikosaeder");
+					koerper = new Icosaeder();
+					zeichne(projektion);
+					repaint();
 				}
 				
 			}
