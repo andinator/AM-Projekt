@@ -8,18 +8,20 @@ public class Wuerfel extends Koerper {
 	public Wuerfel () {
 		super(new ArrayList<Punkt>(), new ArrayList<Kante>());
 
-		eckpunkt = new Punkt[8];
+		eckpunkt = new Punkt[]{
 
-		eckpunkt[0] = new Punkt(-1, -1, -1);
-		eckpunkt[1] = new Punkt(-1, -1, 1);
-		eckpunkt[2] = new Punkt(-1, 1, -1);
-		eckpunkt[3] = new Punkt(-1, 1, 1);
-		eckpunkt[4] = new Punkt(1, -1, -1);
-		eckpunkt[5] = new Punkt(1, -1, 1);
-		eckpunkt[6] = new Punkt(1, 1, -1);
-		eckpunkt[7] = new Punkt(1, 1, 1);
+			new Punkt(-1, -1, -1),
+			new Punkt(-1, -1, 1),
+			new Punkt(-1, 1, -1),
+			new Punkt(-1, 1, 1),
+			new Punkt(1, -1, -1),
+			new Punkt(1, -1, 1),
+			new Punkt(1, 1, -1),
+			new Punkt(1, 1, 1)
+		};
 		
-		for (Punkt p : eckpunkt) punkte.add(p);
+		for (Punkt p : eckpunkt)
+			punkte.add(p);
 				
 		kanten.add(new Kante(eckpunkt[0], eckpunkt[1]));
 		kanten.add(new Kante(eckpunkt[0], eckpunkt[2]));

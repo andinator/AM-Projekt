@@ -14,15 +14,14 @@ public class Icosaeder extends Koerper {
 		new Punkt(0, 0, 5/Math.sqrt(50-10*Math.sqrt(5))),
 		new Punkt(-Math.sqrt(2/(5-Math.sqrt(5))), 0, -1/Math.sqrt(10-2*Math.sqrt(5))),
 		new Punkt(Math.sqrt(2/(5-Math.sqrt(5))), 0, 1/Math.sqrt(10-2*Math.sqrt(5))),
-		new Punkt((1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), -1/2, -1/Math.sqrt(10-2*Math.sqrt(5))),
-		new Punkt((1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), 1/2, -1/Math.sqrt(10-2*Math.sqrt(5))),
-		new Punkt(-(1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), -1/2, 1/Math.sqrt(10-2*Math.sqrt(5))),
-		new Punkt(-(1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), 1/2, 1/Math.sqrt(10-2*Math.sqrt(5))),
-		new Punkt(-(-1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), -1/2*Math.sqrt((5+Math.sqrt(5))/(5-Math.sqrt(5))), -1/Math.sqrt(10-2*Math.sqrt(5))),
-		new Punkt(-(-1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), 1/2*Math.sqrt((5+Math.sqrt(5))/(5-Math.sqrt(5))), -1/Math.sqrt(10-2*Math.sqrt(5))),
-		new Punkt((-1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), -1/2*Math.sqrt((5+Math.sqrt(5))/(5-Math.sqrt(5))), 1/Math.sqrt(10-2*Math.sqrt(5))),
-		new Punkt((-1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), 1/2*Math.sqrt((5+Math.sqrt(5))/(5-Math.sqrt(5))), 1/Math.sqrt(10-2*Math.sqrt(5)))
-		};
+		new Punkt((1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), /*-1/2*/-0.5, -1/Math.sqrt(10-2*Math.sqrt(5))),
+		new Punkt((1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), /*1/2*/0.5, -1/Math.sqrt(10-2*Math.sqrt(5))),
+		new Punkt(-(1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), /*-1/2*/-0.5, 1/Math.sqrt(10-2*Math.sqrt(5))),
+		new Punkt(-(1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), /*1/2*/0.5, 1/Math.sqrt(10-2*Math.sqrt(5))),
+		new Punkt(-(-1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), /*-1/2*/-0.5*Math.sqrt((5+Math.sqrt(5))/(5-Math.sqrt(5))), -1/Math.sqrt(10-2*Math.sqrt(5))),
+		new Punkt(-(-1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), /*1/2*/0.5*Math.sqrt((5+Math.sqrt(5))/(5-Math.sqrt(5))), -1/Math.sqrt(10-2*Math.sqrt(5))),
+		new Punkt((-1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), /*-1/2*/-0.5*Math.sqrt((5+Math.sqrt(5))/(5-Math.sqrt(5))), 1/Math.sqrt(10-2*Math.sqrt(5))),
+		new Punkt((-1+Math.sqrt(5))/(2*Math.sqrt(10-2*Math.sqrt(5))), /*1/2*/0.5*Math.sqrt((5+Math.sqrt(5))/(5-Math.sqrt(5))), 1/Math.sqrt(10-2*Math.sqrt(5))) };
 		
 		for (Punkt p : eckpunkt) 
 			punkte.add(p);
@@ -46,6 +45,9 @@ public class Icosaeder extends Koerper {
 		kanten.add(new Kante(eckpunkt[6], eckpunkt[6]));
 		kanten.add(new Kante(eckpunkt[7], eckpunkt[7]));
 		kanten.add(new Kante(eckpunkt[8], eckpunkt[8]));
+		kanten.add(new Kante(eckpunkt[9], eckpunkt[9]));
+		kanten.add(new Kante(eckpunkt[10], eckpunkt[10]));
+		kanten.add(new Kante(eckpunkt[11], eckpunkt[11]));
 		
-}
+	}
 }

@@ -1,22 +1,11 @@
 package projektion1;
 
 import java.applet.Applet;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 
-public class Main extends Applet implements MouseListener,MouseWheelListener, MouseMotionListener {
+public class Main extends Applet implements MouseListener,MouseWheelListener, MouseMotionListener, ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
@@ -35,7 +24,14 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 	Koerper koerper;
 	Koerper[] xyz = {new X(),new Y(),new Z()};
 	
+	//Checkboxen
+	CheckboxGroup gruppe;
 	
+	Checkbox box1;
+	Checkbox box2;
+	Checkbox box3;
+	Checkbox box4;
+	Checkbox box5;
 
 	// Beobachterposition (Ausgangsposition, ver√§ndert sich mit MouseDragged
 	// event)
@@ -48,6 +44,18 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 													// Objekts zur Mitte
 
 	public void init() {
+		setSize(600,500);
+		
+		setLayout(null); 
+		
+		gruppe = new CheckboxGroup();
+		
+		box1 = new Checkbox("Tetraeder",true);
+		box2 = new Checkbox("Hexaeder",false);
+		box3 = new Checkbox("Oktaeder",false);
+		box4 = new Checkbox("Dodekaeder",false);
+		box5 = new Checkbox("Ikosaeder",false);
+		
 		breite = getSize().width;
 		hoehe = getSize().height;
 		breite = 500;
@@ -61,9 +69,94 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		projektion.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
-		koerper = new Octaeder();
+		koerper = new Icosaeder();
 		
+		//gruppe.add(box1);
+		
+		box1.setVisible(true);
+		box2.setVisible(true);
+		box3.setVisible(true);
+		box4.setVisible(true);
+		box5.setVisible(true);
+		
+		box1.addItemListener(new ItemListener(){
 
+			@Override
+			public void itemStateChanged(ItemEvent ie) {
+				
+				System.out.println(""+ie.getStateChange());
+				if(ie.getStateChange()==1){
+					System.out.println("Tetraeder");
+				}
+				
+			}
+			
+		});
+		box2.addItemListener(new ItemListener(){
+
+			@Override
+			public void itemStateChanged(ItemEvent ie) {
+				
+				System.out.println(""+ie.getStateChange());
+				if(ie.getStateChange()==1){
+					System.out.println("Hexaeder");
+				}
+				
+			}
+			
+		});
+		box3.addItemListener(new ItemListener(){
+
+			@Override
+			public void itemStateChanged(ItemEvent ie) {
+				
+				System.out.println(""+ie.getStateChange());
+				if(ie.getStateChange()==1){
+					System.out.println("Oktaeder");
+				}
+				
+			}
+			
+		});
+		box4.addItemListener(new ItemListener(){
+
+			@Override
+			public void itemStateChanged(ItemEvent ie) {
+				
+				System.out.println(""+ie.getStateChange());
+				if(ie.getStateChange()==1){
+					System.out.println("Dodekaeder");
+				}
+				
+			}
+			
+		});
+		box5.addItemListener(new ItemListener(){
+
+			@Override
+			public void itemStateChanged(ItemEvent ie) {
+				
+				System.out.println(""+ie.getStateChange());
+				if(ie.getStateChange()==1){
+					System.out.println("Ikosaeder");
+				}
+				
+			}
+			
+		});
+		
+		box1.setBounds(510, 100, 100, 10);
+		box2.setBounds(510, 120, 100, 10);
+		box3.setBounds(510, 140, 100, 10);
+		box4.setBounds(510, 160, 100, 10);
+		box5.setBounds(510, 180, 100, 10);
+		
+        add(box1);
+        add(box2);
+        add(box3);
+        add(box4);
+        add(box5);
+		
 		zeichne(projektion);
 		
 		addMouseWheelListener(this);
@@ -132,7 +225,7 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 
 	public void update(Graphics g) {
 		g.drawImage(bild, 0, 0, this);
-		showStatus("Rotation: " + rotation + "∞, \t Erhebung: " + erhebung + "∞");
+		showStatus("Rotation: " + rotation + "∞, \t Erhebung: " + erhebung + "∞, N‰he: " + naeheZuObj);
 	}
 
 	public void paint(Graphics g) {
@@ -156,7 +249,14 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 			//System.out.println("DOWN: "+naeheZuObj);
 			zeichne(projektion);
 			repaint();
-		}
+		}	
 		
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+
 }

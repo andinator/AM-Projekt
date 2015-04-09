@@ -1,11 +1,6 @@
 package projektion1;
 
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
-
 /**
- * 
- * @author georgjung
  *
  *         Die Klasse Punkt speichert dreidimensionale Punkte und ihre jeweilige
  *         Projektion in die zweidimensionale Fläche. Sie braucht dazu die
@@ -36,7 +31,7 @@ public class Punkt{
 	
 	/**
 	 * 
-	 * @param x
+	 * @param x 
 	 *            x-Koordinate des Punktes
 	 * @param y
 	 *            y-Koordinate des Punktes
@@ -52,7 +47,7 @@ public class Punkt{
 		this.x = x;
 		this.y = y;
 		this.z = z;
-
+		
 		this.projektion();
 	}
 
