@@ -32,6 +32,9 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 	Checkbox box3;
 	Checkbox box4;
 	Checkbox box5;
+	Checkbox box6;
+	Checkbox box7;
+	Checkbox box8;
 
 	// Beobachterposition (Ausgangsposition, verändert sich mit MouseDragged
 	// event)
@@ -55,6 +58,9 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		box3 = new Checkbox("Oktaeder",gruppe,false);
 		box4 = new Checkbox("Dodekaeder",gruppe,false);
 		box5 = new Checkbox("Ikosaeder",gruppe,false);
+		box6 = new Checkbox("X Achse",gruppe,false);
+		box7 = new Checkbox("Y Achse",gruppe,false);
+		box8 = new Checkbox("Z Achse",gruppe,false);
 		
 		breite = getSize().width;
 		hoehe = getSize().height;
@@ -78,6 +84,9 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		box3.setVisible(true);
 		box4.setVisible(true);
 		box5.setVisible(true);
+		box6.setVisible(true);
+		box7.setVisible(true);
+		box8.setVisible(true);
 		
 		box1.addItemListener(new ItemListener(){
 
@@ -165,12 +174,18 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		box3.setBounds(510, 140, 100, 10);
 		box4.setBounds(510, 160, 100, 10);
 		box5.setBounds(510, 180, 100, 10);
+		box6.setBounds(510, 200, 100, 10);
+		box7.setBounds(510, 220, 100, 10);
+		box8.setBounds(510, 240, 100, 10);
 		
         add(box1);
         add(box2);
         add(box3);
         add(box4);
         add(box5);
+        add(box6);
+        add(box7);
+        add(box8);
 		
 		zeichne(projektion);
 		
