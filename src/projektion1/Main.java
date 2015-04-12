@@ -135,7 +135,7 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 				System.out.println(""+ie.getStateChange());
 				if(ie.getStateChange()==1){
 					System.out.println("Dodekaeder");
-					//koerper = new Dodekaeder();
+					koerper = new Dodekaeder();
 					zeichne(projektion);
 					repaint();
 				}
