@@ -48,6 +48,8 @@ public class Punkt{
 		this.y = y;
 		this.z = z;
 		
+		System.out.println(x+" "+y+" "+z);
+		
 		this.projektion();
 	}
 

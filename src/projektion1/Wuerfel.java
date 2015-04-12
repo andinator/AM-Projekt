@@ -10,14 +10,14 @@ public class Wuerfel extends Koerper {
 
 		eckpunkt = new Punkt[]{
 
-			new Punkt(-1, -1, -1),
-			new Punkt(-1, -1, 1),
-			new Punkt(-1, 1, -1),
-			new Punkt(-1, 1, 1),
-			new Punkt(1, -1, -1),
-			new Punkt(1, -1, 1),
-			new Punkt(1, 1, -1),
-			new Punkt(1, 1, 1)
+			new Punkt(-0.75, -0.75, -0.75),
+			new Punkt(-0.75, -0.75, 0.75),
+			new Punkt(-0.75, 0.75, -0.75),
+			new Punkt(-0.75, 0.75, 0.75),
+			new Punkt(0.75, -0.75, -0.75),
+			new Punkt(0.75, -0.75, 0.75),
+			new Punkt(0.75, 0.75, -0.75),
+			new Punkt(0.75, 0.75, 0.75)
 		};
 		
 		for (Punkt p : eckpunkt)
