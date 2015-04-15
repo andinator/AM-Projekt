@@ -36,7 +36,7 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 	Checkbox box7;
 	Checkbox box8;
 
-	public boolean x,y,z = true;
+	public boolean x=true,y=true,z = true;
 	
 	// Beobachterposition (Ausgangsposition, verändert sich mit MouseDragged
 	// event)
@@ -179,10 +179,14 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 				if(e.getStateChange()==1){
 					System.out.println("x an");
 					x = true;
+					zeichne(projektion);
+					repaint();
 				}
 				else{
 					System.out.println("x aus");
 					x = false;
+					zeichne(projektion);
+					repaint();
 				}
 			}
 		});
@@ -194,10 +198,14 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 				if(e.getStateChange()==1){
 					System.out.println("y an");
 					y = true;
+					zeichne(projektion);
+					repaint();
 				}
 				else{
 					System.out.println("y aus");
 					y = false;
+					zeichne(projektion);
+					repaint();
 				}
 				
 			}
@@ -209,10 +217,14 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 			if(e.getStateChange()==1){
 				System.out.println("z an");
 				z = true;
+				zeichne(projektion);
+				repaint();
 			}
 			else{
 				System.out.println("z aus");
 				z = false;
+				zeichne(projektion);
+				repaint();
 			}
 			
 		}
@@ -255,14 +267,24 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 			g.setColor(Color.red);
 			xyz[0].zeichne(g);
 		}
+		if(!x){
+			
+		}
 		if(y){
 			g.setColor(Color.green);
 			xyz[1].zeichne(g);
+		}
+		if(!y){
+			
 		}
 		if(z){
 			g.setColor(Color.blue);
 			xyz[2].zeichne(g);
 		}
+		if(!z){
+			
+		}
+		
 	}
 
 	@Override
