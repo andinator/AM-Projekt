@@ -36,6 +36,8 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 	Checkbox box7;
 	Checkbox box8;
 
+	public boolean x,y,z = true;
+	
 	// Beobachterposition (Ausgangsposition, verändert sich mit MouseDragged
 	// event)
 	protected static int rotation = 30, erhebung = 35;
@@ -58,9 +60,9 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		box3 = new Checkbox("Oktaeder",gruppe,false);
 		box4 = new Checkbox("Dodekaeder",gruppe,false);
 		box5 = new Checkbox("Ikosaeder",gruppe,false);
-		box6 = new Checkbox("X Achse",gruppe,false);
-		box7 = new Checkbox("Y Achse",gruppe,false);
-		box8 = new Checkbox("Z Achse",gruppe,false);
+		box6 = new Checkbox("X Achse",true);
+		box7 = new Checkbox("Y Achse",true);
+		box8 = new Checkbox("Z Achse",true);
 		
 		breite = getSize().width;
 		hoehe = getSize().height;
@@ -169,14 +171,61 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 			
 		});
 		
+		box6.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				
+				if(e.getStateChange()==1){
+					System.out.println("x an");
+					x = true;
+				}
+				else{
+					System.out.println("x aus");
+					x = false;
+				}
+			}
+		});
+		
+		box7.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange()==1){
+					System.out.println("y an");
+					y = true;
+				}
+				else{
+					System.out.println("y aus");
+					y = false;
+				}
+				
+			}
+		});
+		box8.addItemListener(new ItemListener() {
+	
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			if(e.getStateChange()==1){
+				System.out.println("z an");
+				z = true;
+			}
+			else{
+				System.out.println("z aus");
+				z = false;
+			}
+			
+		}
+});
+		
 		box1.setBounds(510, 100, 100, 10);
-		box2.setBounds(510, 120, 100, 10);
-		box3.setBounds(510, 140, 100, 10);
-		box4.setBounds(510, 160, 100, 10);
-		box5.setBounds(510, 180, 100, 10);
-		box6.setBounds(510, 200, 100, 10);
-		box7.setBounds(510, 220, 100, 10);
-		box8.setBounds(510, 240, 100, 10);
+		box2.setBounds(510, 130, 100, 10);
+		box3.setBounds(510, 160, 100, 10);
+		box4.setBounds(510, 190, 100, 10);
+		box5.setBounds(510, 220, 100, 10);
+		box6.setBounds(510, 250, 100, 10);
+		box7.setBounds(510, 280, 100, 10);
+		box8.setBounds(510, 310, 100, 10);
 		
         add(box1);
         add(box2);
@@ -202,12 +251,18 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		g.setColor(Color.white);
 		koerper.zeichne(g);
 		
-		g.setColor(Color.red);
-		xyz[0].zeichne(g);
-		g.setColor(Color.green);
-		xyz[1].zeichne(g);
-		g.setColor(Color.blue);
-		xyz[2].zeichne(g);
+		if(x){
+			g.setColor(Color.red);
+			xyz[0].zeichne(g);
+		}
+		if(y){
+			g.setColor(Color.green);
+			xyz[1].zeichne(g);
+		}
+		if(z){
+			g.setColor(Color.blue);
+			xyz[2].zeichne(g);
+		}
 	}
 
 	@Override
