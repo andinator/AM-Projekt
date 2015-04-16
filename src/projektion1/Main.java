@@ -49,7 +49,7 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 													// Objekts zur Mitte
 
 	public void init() {
-		setSize(600,500);
+		setSize(800,500);
 		
 		setLayout(null); 
 		
@@ -235,9 +235,9 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		box3.setBounds(510, 160, 100, 10);
 		box4.setBounds(510, 190, 100, 10);
 		box5.setBounds(510, 220, 100, 10);
-		box6.setBounds(510, 250, 100, 10);
-		box7.setBounds(510, 280, 100, 10);
-		box8.setBounds(510, 310, 100, 10);
+		box6.setBounds(630, 100, 100, 10);
+		box7.setBounds(630, 130, 100, 10);
+		box8.setBounds(630, 160, 100, 10);
 		
         add(box1);
         add(box2);
