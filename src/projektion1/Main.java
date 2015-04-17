@@ -16,7 +16,7 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 	int mx, my;
 
 	// Widgets
-	Image bild;
+	Image bild, achsen;
 	Graphics grafik;
 	Graphics2D projektion;
 
@@ -35,6 +35,7 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 	Checkbox box6;
 	Checkbox box7;
 	Checkbox box8;
+	Checkbox roboter;
 
 	public boolean x=true,y=true,z = true;
 	
@@ -63,6 +64,7 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		box6 = new Checkbox("X Achse",true);
 		box7 = new Checkbox("Y Achse",true);
 		box8 = new Checkbox("Z Achse",true);
+		roboter = new Checkbox("Automatisch ",false);
 		
 		breite = getSize().width;
 		hoehe = getSize().height;
@@ -72,6 +74,9 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 
 		bild = createImage(breite, hoehe);
 		grafik = bild.getGraphics();
+		achsen = getImage( getCodeBase(), "xyz.gif" );
+		
+		//g.drawImage( bild, 5, 400, this );
 		projektion = (Graphics2D) grafik;
 
 		projektion.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -89,6 +94,7 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		box6.setVisible(true);
 		box7.setVisible(true);
 		box8.setVisible(true);
+		roboter.setVisible(true);
 		
 		box1.addItemListener(new ItemListener(){
 
@@ -212,32 +218,53 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		});
 		box8.addItemListener(new ItemListener() {
 	
-		@Override
-		public void itemStateChanged(ItemEvent e) {
-			if(e.getStateChange()==1){
-				System.out.println("z an");
-				z = true;
-				zeichne(projektion);
-				repaint();
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange()==1){
+					System.out.println("z an");
+					z = true;
+					zeichne(projektion);
+					repaint();
+				}
+				else{
+					System.out.println("z aus");
+					z = false;
+					zeichne(projektion);
+					repaint();
+				}
+				
 			}
-			else{
-				System.out.println("z aus");
-				z = false;
-				zeichne(projektion);
-				repaint();
-			}
-			
-		}
-});
 		
-		box1.setBounds(510, 100, 100, 10);
-		box2.setBounds(510, 130, 100, 10);
-		box3.setBounds(510, 160, 100, 10);
-		box4.setBounds(510, 190, 100, 10);
-		box5.setBounds(510, 220, 100, 10);
-		box6.setBounds(630, 100, 100, 10);
-		box7.setBounds(630, 130, 100, 10);
-		box8.setBounds(630, 160, 100, 10);
+		
+		});
+		
+		roboter.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange()==1){
+					System.out.println("Automatik");
+					Roboter roboter = new Roboter();
+					//Robot stuff
+				}
+				else{
+					
+				}
+				
+			}
+		
+		
+		});
+		
+		box1.setBounds(510, 100, 100, 15);
+		box2.setBounds(510, 130, 100, 15);
+		box3.setBounds(510, 160, 100, 15);
+		box4.setBounds(510, 190, 100, 15);
+		box5.setBounds(510, 220, 100, 15);
+		box6.setBounds(630, 100, 100, 15);
+		box7.setBounds(630, 130, 100, 15);
+		box8.setBounds(630, 160, 100, 15);
+		roboter.setBounds(510, 270, 100, 15);
 		
         add(box1);
         add(box2);
@@ -247,6 +274,7 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
         add(box6);
         add(box7);
         add(box8);
+        add(roboter);
 		
 		zeichne(projektion);
 		
@@ -300,9 +328,6 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		rotation -= neu_mx - mx;
 		erhebung += neu_my - my;
 
-		// TODO: Debug-Information entfernen
-		// System.out.println(neu_mx + " " + neu_my);
-
 		zeichne(projektion);
 
 		// Mausposition f√ºr die n√§chste Anpassung puffern
@@ -332,6 +357,7 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 
 	public void update(Graphics g) {
 		g.drawImage(bild, 0, 0, this);
+		g.drawImage( achsen, 5, 400, this );
 		showStatus("Rotation: " + rotation + "∞, \t Erhebung: " + erhebung + "∞, N‰he: " + naeheZuObj);
 	}
 
@@ -341,16 +367,16 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		double notches = e.getWheelRotation();
+		double umdrehungen = e.getWheelRotation();
 		
-		if(notches < 0){
+		if(umdrehungen < 0){
 			naeheZuObj=naeheZuObj-0.1;
 			
 			//System.out.println("UP: "+naeheZuObj);
 			zeichne(projektion);
 			repaint();
 		}
-		if(notches > 0){
+		if(umdrehungen > 0){
 			naeheZuObj=naeheZuObj+0.1;
 			
 			//System.out.println("DOWN: "+naeheZuObj);
