@@ -245,7 +245,7 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 				if(e.getStateChange()==1){
 					System.out.println("Automatik");
 					Roboter roboter = new Roboter();
-					//Robot stuff
+					roboter.init();
 				}
 				else{
 					
@@ -284,7 +284,6 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 	}
 
 	public void zeichne(Graphics2D g) {
-		
 		
 		g.setColor(Color.gray);
 		g.fillRect(0, 0, breite, hoehe);
@@ -390,6 +389,17 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 	public void actionPerformed(ActionEvent e) {
 		
 		
+	}
+	
+	public void robot(){
+		if(projektion!=null){
+			System.out.println("OK!");
+		}
+		else{
+			System.out.println("NICHT OK!");
+		}
+		zeichne(projektion);
+		repaint();
 	}
 
 }
