@@ -4,22 +4,18 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 
-public class Roboter {
+public class Roboter implements Runnable{
 	public Robot roboter = null;
 	int x=100,y=200;
 	
-	Thread thread = new Thread();
 	Main main = new Main();
 	
 	public void init(){
 		
-		int nummer = 0;
-		for(nummer = 0; nummer<=200;nummer=nummer+50){
-			drehen(nummer);
-		}
+		
 	}
 	
-	public void drehen(int anzahl){
+	public void rechts(){
 
 		try {
 			roboter = new Robot();
@@ -30,20 +26,23 @@ public class Roboter {
 
 		roboter.mouseMove(x, y);
 
-		System.out.println(""+anzahl);
 		roboter.mousePress(InputEvent.BUTTON1_MASK);
-		roboter.mouseMove(x+anzahl, y);
+		roboter.mouseMove(x=x+30, y);
 		roboter.mouseRelease(InputEvent.BUTTON1_MASK);
-		main.robot();
+		
 		//main.repaint();
 		try {
-			thread.sleep(100);
+			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
-	
-

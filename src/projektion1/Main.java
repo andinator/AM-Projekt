@@ -4,8 +4,8 @@ import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 
-
-public class Main extends Applet implements MouseListener,MouseWheelListener, MouseMotionListener, ActionListener {
+public class Main extends Applet implements MouseListener, MouseWheelListener,
+		MouseMotionListener, ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
@@ -22,11 +22,11 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 
 	// Koerper
 	Koerper koerper;
-	Koerper[] xyz = {new X(),new Y(),new Z()};
-	
-	//Checkboxen
+	Koerper[] xyz = { new X(), new Y(), new Z() };
+
+	// Checkboxen
 	CheckboxGroup gruppe;
-	
+
 	Checkbox box1;
 	Checkbox box2;
 	Checkbox box3;
@@ -37,55 +37,56 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 	Checkbox box8;
 	Checkbox roboter;
 
-	public boolean x=true,y=true,z = true;
-	
+	public boolean x = true, y = true, z = true;
+
 	// Beobachterposition (Ausgangsposition, ver√§ndert sich mit MouseDragged
 	// event)
 	protected static int rotation = 30, erhebung = 35;
 
 	protected static int skalierung;
 	protected final static double naehe = 3; // Distanz von Sicht zur Seite des
-											 // Objekts
+												// Objekts
 	protected static double naeheZuObj = 0.2; // Distanz von der Seite des
-													// Objekts zur Mitte
+												// Objekts zur Mitte
 
+	@Override
 	public void init() {
-		setSize(800,500);
-		
-		setLayout(null); 
-		
+		setSize(800, 500);
+
+		setLayout(null);
+
 		gruppe = new CheckboxGroup();
-		
-		box1 = new Checkbox("Tetraeder",gruppe,true);
-		box2 = new Checkbox("Hexaeder",gruppe,false);
-		box3 = new Checkbox("Oktaeder",gruppe,false);
-		box4 = new Checkbox("Dodekaeder",gruppe,false);
-		box5 = new Checkbox("Ikosaeder",gruppe,false);
-		box6 = new Checkbox("X Achse",true);
-		box7 = new Checkbox("Y Achse",true);
-		box8 = new Checkbox("Z Achse",true);
-		roboter = new Checkbox("Automatisch ",false);
-		
+
+		box1 = new Checkbox("Tetraeder", gruppe, true);
+		box2 = new Checkbox("Hexaeder", gruppe, false);
+		box3 = new Checkbox("Oktaeder", gruppe, false);
+		box4 = new Checkbox("Dodekaeder", gruppe, false);
+		box5 = new Checkbox("Ikosaeder", gruppe, false);
+		box6 = new Checkbox("X Achse", true);
+		box7 = new Checkbox("Y Achse", true);
+		box8 = new Checkbox("Z Achse", true);
+		roboter = new Checkbox("Automatisch ", false);
+
 		breite = getSize().width;
 		hoehe = getSize().height;
 		breite = 500;
 		hoehe = 500;
-		skalierung = (int) breite / 4;
+		skalierung = breite / 4;
 
 		bild = createImage(breite, hoehe);
 		grafik = bild.getGraphics();
-		achsen = getImage( getCodeBase(), "xyz.gif" );
-		
-		//g.drawImage( bild, 5, 400, this );
+		achsen = getImage(getCodeBase(), "xyz.gif");
+
+		// g.drawImage( bild, 5, 400, this );
 		projektion = (Graphics2D) grafik;
 
 		projektion.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
 		koerper = new Tetraeder();
-		
-		//gruppe.add(box1);
-		
+
+		// gruppe.add(box1);
+
 		box1.setVisible(true);
 		box2.setVisible(true);
 		box3.setVisible(true);
@@ -95,100 +96,99 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		box7.setVisible(true);
 		box8.setVisible(true);
 		roboter.setVisible(true);
-		
-		box1.addItemListener(new ItemListener(){
+
+		box1.addItemListener(new ItemListener() {
 
 			@Override
 			public void itemStateChanged(ItemEvent ie) {
-				
-				System.out.println(""+ie.getStateChange());
-				if(ie.getStateChange()==1){
+
+				System.out.println("" + ie.getStateChange());
+				if (ie.getStateChange() == 1) {
 					System.out.println("Tetraeder");
 					koerper = new Tetraeder();
 					zeichne(projektion);
 					repaint();
 				}
-				
+
 			}
-			
+
 		});
-		box2.addItemListener(new ItemListener(){
+		box2.addItemListener(new ItemListener() {
 
 			@Override
 			public void itemStateChanged(ItemEvent ie) {
-				
-				System.out.println(""+ie.getStateChange());
-				if(ie.getStateChange()==1){
+
+				System.out.println("" + ie.getStateChange());
+				if (ie.getStateChange() == 1) {
 					System.out.println("Hexaeder");
 					koerper = new Wuerfel();
 					zeichne(projektion);
 					repaint();
 				}
-				
+
 			}
-			
+
 		});
-		box3.addItemListener(new ItemListener(){
+		box3.addItemListener(new ItemListener() {
 
 			@Override
 			public void itemStateChanged(ItemEvent ie) {
-				
-				System.out.println(""+ie.getStateChange());
-				if(ie.getStateChange()==1){
+
+				System.out.println("" + ie.getStateChange());
+				if (ie.getStateChange() == 1) {
 					System.out.println("Oktaeder");
 					koerper = new Octaeder();
 					zeichne(projektion);
 					repaint();
 				}
-				
+
 			}
-			
+
 		});
-		box4.addItemListener(new ItemListener(){
+		box4.addItemListener(new ItemListener() {
 
 			@Override
 			public void itemStateChanged(ItemEvent ie) {
-				
-				System.out.println(""+ie.getStateChange());
-				if(ie.getStateChange()==1){
+
+				System.out.println("" + ie.getStateChange());
+				if (ie.getStateChange() == 1) {
 					System.out.println("Dodekaeder");
 					koerper = new Dodekaeder();
 					zeichne(projektion);
 					repaint();
 				}
-				
+
 			}
-			
+
 		});
-		box5.addItemListener(new ItemListener(){
+		box5.addItemListener(new ItemListener() {
 
 			@Override
 			public void itemStateChanged(ItemEvent ie) {
-				
-				System.out.println(""+ie.getStateChange());
-				if(ie.getStateChange()==1){
+
+				System.out.println("" + ie.getStateChange());
+				if (ie.getStateChange() == 1) {
 					System.out.println("Ikosaeder");
 					koerper = new Icosaeder();
 					zeichne(projektion);
 					repaint();
 				}
-				
+
 			}
-			
+
 		});
-		
+
 		box6.addItemListener(new ItemListener() {
-			
+
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				
-				if(e.getStateChange()==1){
+
+				if (e.getStateChange() == 1) {
 					System.out.println("x an");
 					x = true;
 					zeichne(projektion);
 					repaint();
-				}
-				else{
+				} else {
 					System.out.println("x aus");
 					x = false;
 					zeichne(projektion);
@@ -196,66 +196,78 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 				}
 			}
 		});
-		
+
 		box7.addItemListener(new ItemListener() {
-			
+
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				if(e.getStateChange()==1){
+				if (e.getStateChange() == 1) {
 					System.out.println("y an");
 					y = true;
 					zeichne(projektion);
 					repaint();
-				}
-				else{
+				} else {
 					System.out.println("y aus");
 					y = false;
 					zeichne(projektion);
 					repaint();
 				}
-				
+
 			}
 		});
 		box8.addItemListener(new ItemListener() {
-	
+
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				if(e.getStateChange()==1){
+				if (e.getStateChange() == 1) {
 					System.out.println("z an");
 					z = true;
 					zeichne(projektion);
 					repaint();
-				}
-				else{
+				} else {
 					System.out.println("z aus");
 					z = false;
 					zeichne(projektion);
 					repaint();
 				}
-				
+
 			}
-		
-		
+
 		});
-		
+
 		roboter.addItemListener(new ItemListener() {
-			
+
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				if(e.getStateChange()==1){
+				if (e.getStateChange() == 1) {
 					System.out.println("Automatik");
-					Roboter roboter = new Roboter();
-					roboter.init();
+					final Roboter roboter = new Roboter();
+
+					for (int i = 0; i < 6; i++) {
+
+						
+								roboter.rechts();
+						
+						
+
+						zeichne(projektion);
+
+						
+						repaint();
+
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e1) {
+							
+							e1.printStackTrace();
+						}
+					}
+
 				}
-				else{
-					
-				}
-				
 			}
-		
-		
 		});
-		
+
+
 		box1.setBounds(510, 100, 100, 15);
 		box2.setBounds(510, 130, 100, 15);
 		box3.setBounds(510, 160, 100, 15);
@@ -265,53 +277,53 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 		box7.setBounds(630, 130, 100, 15);
 		box8.setBounds(630, 160, 100, 15);
 		roboter.setBounds(510, 270, 100, 15);
-		
-        add(box1);
-        add(box2);
-        add(box3);
-        add(box4);
-        add(box5);
-        add(box6);
-        add(box7);
-        add(box8);
-        add(roboter);
-		
+
+		add(box1);
+		add(box2);
+		add(box3);
+		add(box4);
+		add(box5);
+		add(box6);
+		add(box7);
+		add(box8);
+		add(roboter);
+
 		zeichne(projektion);
-		
+
 		addMouseWheelListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
 	}
 
 	public void zeichne(Graphics2D g) {
-		
+
 		g.setColor(Color.gray);
 		g.fillRect(0, 0, breite, hoehe);
 		g.setColor(Color.white);
 		koerper.zeichne(g);
-		
-		if(x){
+
+		if (x) {
 			g.setColor(Color.red);
 			xyz[0].zeichne(g);
 		}
-		if(!x){
-			
+		if (!x) {
+
 		}
-		if(y){
+		if (y) {
 			g.setColor(Color.green);
 			xyz[1].zeichne(g);
 		}
-		if(!y){
-			
+		if (!y) {
+
 		}
-		if(z){
+		if (z) {
 			g.setColor(Color.blue);
 			xyz[2].zeichne(g);
 		}
-		if(!z){
-			
+		if (!z) {
+
 		}
-		
+
 	}
 
 	@Override
@@ -343,23 +355,40 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 	 * MousePressed setzt die aktuelle Mausposition als Ausgangspunkt f√ºr MouseDragged events
 	 */
 	public void mousePressed(MouseEvent e) {
+		System.out.println("gedr¸ckt!");
 		mx = e.getX();
 		my = e.getY();
 		e.consume();
 	}
 
-	public void mouseMoved(MouseEvent e) { }
-	public void mouseClicked(MouseEvent e) { }
-	public void mouseReleased(MouseEvent e) { }
-	public void mouseEntered(MouseEvent e) { }
-	public void mouseExited(MouseEvent e) { }
+	@Override
+	public void mouseMoved(MouseEvent e) {
+	}
 
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+	}
+
+	@Override
 	public void update(Graphics g) {
 		g.drawImage(bild, 0, 0, this);
-		g.drawImage( achsen, 5, 400, this );
+		g.drawImage(achsen, 5, 400, this);
 		showStatus("Rotation: " + rotation + "∞, \t Erhebung: " + erhebung + "∞, N‰he: " + naeheZuObj);
 	}
 
+	@Override
 	public void paint(Graphics g) {
 		update(g);
 	}
@@ -367,39 +396,27 @@ public class Main extends Applet implements MouseListener,MouseWheelListener, Mo
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		double umdrehungen = e.getWheelRotation();
-		
-		if(umdrehungen < 0){
-			naeheZuObj=naeheZuObj-0.1;
-			
-			//System.out.println("UP: "+naeheZuObj);
+
+		if (umdrehungen < 0) {
+			naeheZuObj = naeheZuObj - 0.1;
+
+			// System.out.println("UP: "+naeheZuObj);
 			zeichne(projektion);
 			repaint();
 		}
-		if(umdrehungen > 0){
-			naeheZuObj=naeheZuObj+0.1;
-			
-			//System.out.println("DOWN: "+naeheZuObj);
+		if (umdrehungen > 0) {
+			naeheZuObj = naeheZuObj + 0.1;
+
+			// System.out.println("DOWN: "+naeheZuObj);
 			zeichne(projektion);
 			repaint();
-		}	
-		
+		}
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		
-	}
-	
-	public void robot(){
-		if(projektion!=null){
-			System.out.println("OK!");
-		}
-		else{
-			System.out.println("NICHT OK!");
-		}
-		zeichne(projektion);
-		repaint();
+
 	}
 
 }
