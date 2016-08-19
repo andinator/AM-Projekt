@@ -1,16 +1,6 @@
 package projektion1;
 
-/**
- *
- *         Die Klasse Punkt speichert dreidimensionale Punkte und ihre jeweilige
- *         Projektion in die zweidimensionale Fläche. Sie braucht dazu die
- *         statischen Variablen rotation, erhebung, hoehe, breite uns skalierung
- *         aus der Klasse Main.
- * 
- *         Die Koeffizienten der Projektion, die auf Winkelfunktionen beruhen,
- *         werden nur bei Änderung des Blickwinkels neu berechnet und für alle
- *         Punkte statisch abgelegt.
- */
+
 public class Punkt{
 	// Koeffizienten zur perspektivischen Projektion
 	private static double theta = Math.PI * Main.rotation / 180.0;
@@ -26,22 +16,7 @@ public class Punkt{
 	// Projektion in 2D
 	int px, py;
 
-	
-	
-	
-	/**
-	 * 
-	 * @param x 
-	 *            x-Koordinate des Punktes
-	 * @param y
-	 *            y-Koordinate des Punktes
-	 * @param z
-	 *            z-Koordinate des Punktes
-	 * 
-	 * @param    x-, y- und z-Koordinate des Punktes. Die Projektion wird
-	 *            automatisch berechnet und bis zur Änderung des Blickwinkels
-	 *            abgelegt
-	 */
+
 	public Punkt(double x, double y, double z) {
 		super();
 		this.x = x;
@@ -81,8 +56,7 @@ public class Punkt{
 		x1 = x1 * Main.naehe / (z1 + Main.naehe + Main.naeheZuObj);
 		y1 = y1 * Main.naehe / (z1 + Main.naehe + Main.naeheZuObj);
 
-		// Addiere 0,5 um beim Integercast eine Rundung zu erhalten
-		px = (int) (Main.breite / 2 + Main.skalierung * x1 + 0.5);
+		px = (int) (Main.breite / 2 + Main.skalierung * x1 + 0.5); // +0.5 ist Rundung
 		py = (int) (Main.hoehe / 2 - Main.skalierung * y1 + 0.5);
 	}
 	

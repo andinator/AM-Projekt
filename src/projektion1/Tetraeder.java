@@ -1,7 +1,6 @@
 package projektion1;
 
 import java.util.ArrayList;
-import java.lang.Math;
 
 public class Tetraeder extends Koerper {
 	Punkt[] eckpunkt;

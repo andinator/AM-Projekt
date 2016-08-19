@@ -1,6 +1,5 @@
 package projektion1;
 
-import java.lang.Math;
 import java.util.ArrayList;
 
 public class Icosaeder extends Koerper {
